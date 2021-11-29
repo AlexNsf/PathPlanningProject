@@ -8,6 +8,7 @@
 #include <math.h>
 #include <limits>
 #include <chrono>
+#include <set>
 
 class Search
 {
@@ -17,6 +18,7 @@ class Search
         SearchResult startSearch(ILogger *Logger, const Map &Map, const EnvironmentOptions &options);
 
     protected:
+    void makePrimaryPath(Node* curNode);
         //CODE HERE
 
         //Hint 1. You definetely need class variables for OPEN and CLOSE
@@ -37,5 +39,8 @@ class Search
         std::list<Node>                 lppath, hppath; //
 
         //CODE HERE to define other members of the class
+
+        std::set<std::pair<double, Node*>> OPEN;
+        std::vector<Node*> CLOSE;
 };
 #endif
